@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/libs/selenium-server-standalone-3.4.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/selenium-server-standalone-3.4.0.jar!/" />
+    </SOURCES>
   </library>
 </component>

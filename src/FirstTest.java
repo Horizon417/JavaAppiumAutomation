@@ -99,6 +99,26 @@ public class FirstTest {
 
     }
 
+    @Test
+    public void findTextAtMainScreen() {
+        assertElementHasText(By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "Search Wikipedia",
+                "Cannot find search input",
+                10 );
+    }
+
+    @Test
+    public void findTextAtSearchScreen() {
+        waitForElementAndClick(By.id("org.wikipedia:id/search_container"),
+                "Cannot find search input",
+                10);
+
+        assertElementHasText(By.id("org.wikipedia:id/search_src_text"),
+                "Search…",
+                "Cant find required text at element",
+                15);
+    }
+
     private WebElement waitForElementPresent(By by,String errorMessage, long timeoutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.withMessage(errorMessage + "\n");
@@ -131,5 +151,12 @@ public class FirstTest {
         WebElement element = waitForElementPresent(by,errorMessage, timeoutInSeconds);
         element.clear();
         return element;
+    }
+
+    private Boolean assertElementHasText(By by, String text, String errorMessage, long timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        wait.withMessage(errorMessage + "\n");
+        WebElement element = waitForElementPresent(by,errorMessage, timeoutInSeconds);
+        return wait.until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 }

@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/libs/java-client-4.1.2.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/java-client-4.1.2-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

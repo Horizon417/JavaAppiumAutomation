@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.util.List;
 
 public class FirstTest {
     private AppiumDriver driver;
@@ -117,6 +118,37 @@ public class FirstTest {
                 "Search…",
                 "Cant find required text at element",
                 15);
+    }
+
+    @Test
+    public void myTest(){
+
+        waitForElementAndClick(By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "Cannot find search input",
+                5);
+
+        waitForElementAndSendKeys(By.xpath("//*[contains(@text, 'Search…')]"),
+                "Java",
+                "Cannot find search input",
+                5);
+
+        waitForElementPresent(By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title']"),
+                "not found list items",
+                20);
+
+        By by = By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title']");
+        List<WebElement> list = driver.findElements(by);
+        Assert.assertTrue("Количество найденых результатов неверно", list.size()>1);
+
+
+        waitForElementAndClear(By.id("org.wikipedia:id/search_src_text"), "Cant find search field", 15);
+
+
+        assertElementHasText(By.id("org.wikipedia:id/search_src_text"),
+                "Search…",
+                "Cant find required text at element",
+                15);
+
     }
 
     private WebElement waitForElementPresent(By by,String errorMessage, long timeoutInSeconds){

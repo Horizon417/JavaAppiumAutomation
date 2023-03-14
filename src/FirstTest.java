@@ -140,15 +140,9 @@ public class FirstTest {
         List<WebElement> list = driver.findElements(by);
         Assert.assertTrue("Количество найденых результатов неверно", list.size()>1);
 
-
-        waitForElementAndClear(By.id("org.wikipedia:id/search_src_text"), "Cant find search field", 15);
-
-
-        assertElementHasText(By.id("org.wikipedia:id/search_src_text"),
-                "Search…",
-                "Cant find required text at element",
-                15);
-
+        for(WebElement element:list) {
+            Assert.assertTrue("Required word not found in search result", element.getText().contains("Java") );
+        }
     }
 
     private WebElement waitForElementPresent(By by,String errorMessage, long timeoutInSeconds){

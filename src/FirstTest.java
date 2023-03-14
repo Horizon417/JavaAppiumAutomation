@@ -121,7 +121,7 @@ public class FirstTest {
     }
 
     @Test
-    public void myTest(){
+    public void findSeveralResultsAndCancelSearch(){
 
         waitForElementAndClick(By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
                 "Cannot find search input",
